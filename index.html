@@ -17,12 +17,11 @@
             overflow-x: hidden;
             margin: 0;
             padding: 40px 20px;
-            /* گرادیان‌های نئونی متحرک در پس‌زمینه */
             background-image: 
                 radial-gradient(circle at 15% 50%, rgba(157, 78, 221, 0.15), transparent 25%),
                 radial-gradient(circle at 85% 30%, rgba(0, 243, 255, 0.15), transparent 25%);
             background-attachment: fixed;
-            transition: background-position 0.1s ease-out; /* برای افکت پارالاکس موس */
+            transition: background-position 0.1s ease-out;
             line-height: 1.8;
             min-height: 100vh;
         }
@@ -70,7 +69,6 @@
             padding: 45px;
         }
         
-        /* افکت شاین (برق زدن) روی کارت‌ها هنگام هاور */
         .neo-glass-card::before {
             content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
             background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
@@ -107,52 +105,43 @@
         }
 
         /* Profile Header Block */
-.profile-header-block {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 40px;
-    align-items: center;
-}
+        .profile-header-block {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 40px;
+            align-items: center;
+        }
 
-.profile-avatar {
-    width: 160px;
-    height: 160px;
-    border-radius: 32% 68% 68% 32% / 32% 32% 68% 68%;
-    overflow: hidden;
-    background: linear-gradient(135deg, #00f3ff, #9d4edd);
-    box-shadow: 0 20px 50px rgba(0, 243, 255, .25);
-    border: 3px solid rgba(255, 255, 255, .15);
+        .profile-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 32% 68% 68% 32% / 32% 32% 68% 68%;
+            overflow: hidden;
+            background: linear-gradient(135deg, #00f3ff, #9d4edd);
+            box-shadow: 0 20px 50px rgba(0, 243, 255, .25);
+            border: 3px solid rgba(255, 255, 255, .15);
+            animation: morphFloat 8s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+            will-change: border-radius, transform;
+            transform: translate3d(0, 0, 0);
+        }
 
-    /* تغییر ۱: افزایش زمان به ۸ ثانیه و استفاده از cubic-bezier برای نرمی فوق‌العاده */
-    animation: morphFloat 8s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
-    /* تغییر ۲: فعال‌سازی شتاب‌دهنده گرافیکی (GPU) برای حذف لرزش لبه‌ها */
-    will-change: border-radius, transform;
-    transform: translate3d(0, 0, 0);
-}
-
-.profile-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* تغییر ۳: استفاده از translate3d به جای translateY معمولی جهت رندر روان‌تر تصویری */
-@keyframes morphFloat {
-    0%, 100% { 
-        border-radius: 32% 68% 68% 32% / 32% 32% 68% 68%; 
-        transform: translate3d(0, 0, 0); 
-    }
-    50% { 
-        border-radius: 68% 32% 32% 68% / 68% 68% 32% 32%; 
-        transform: translate3d(0, -12px, 0); 
-    }
-}
-
-
-    
-        
+        @keyframes morphFloat {
+            0%, 100% { 
+                border-radius: 32% 68% 68% 32% / 32% 32% 68% 68%; 
+                transform: translate3d(0, 0, 0); 
+            }
+            50% { 
+                border-radius: 68% 32% 32% 68% / 68% 68% 32% 32%; 
+                transform: translate3d(0, -12px, 0); 
+            }
+        }
 
         .intro-text h1 {
             font-size: 36px;
@@ -246,7 +235,8 @@
             border-radius: 20px;
             width: 0;
             box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
-            transition: width 1.8s cubic-bezier(0.19, 1, 0.22, 1);
+            /* زمان انیمیشن برای رویدادهای بارگذاری تنظیم شد */
+            transition: width 3.2s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         .sub-skills-divider {
@@ -381,10 +371,14 @@
                 <div class="intro-text">
                     <p style="font-size: 16px; color: #00f3ff; margin-bottom: 4px; font-weight: 500;">درود بر شما 👋 من</p>
                     <h1 class="text-gradient">علی اکبر نجفی هستم</h1>
-                    <div class="subtitle">کارشناس IT | تحلیل‌گر بازارهای مالی</div>
+                    <div class="subtitle"> کارشناس نرم افزار | معامله گر بازارهای مالی</div>
                     <p class="description">
-                        علاقه‌مند به یادگیری و پیشرفت مستمر در زمینه مهندسی کامپیوتر، بازارهای مالی، معامله‌گری و هوش مصنوعی. 
-                        متخصص در ترکیب علم نرم‌افزار با استراتژی‌های مالی رفتاری.
+                         من علی‌اکبر نجفی هستم؛ مهندس نرم‌افزار و معامله‌گر بازارهای مالی. فلسفه کاری من بر یک اصل استوار است: 
+                        <strong style="color: #fff; font-weight: 600;">«هر کاری یا نباید انجام شود، یا باید از پایه، کاملاً استاندارد و به نحو احسن به ثمر برسد.»</strong>
+                        <br><br>
+                         با تلفیق تخصص در معماری همه‌جانبه سیستم‌ها (Full-Stack) و دانش عمیق اقتصاد رفتاری و پرایس اکشن، راهکارهایی دقیق و پایدار خلق می‌کنم. چه در توسعه سیستم‌های پیچیده سازمانی و چه در طراحی پلتفرم‌های پیشرفته معاملاتی، نگاه من استراتژیک و مهندسی است.
+                        <br><br>
+                         من ظرافت برنامه‌نویسی و مدیریت ریسک معامله‌گری را ترکیب می‌کنم تا چالش‌ها را حل کرده و ایده‌ها را به محصولاتی با بالاترین استانداردهای کیفی تبدیل کنم.
                     </p>
                 </div>
             </div>
@@ -393,118 +387,203 @@
             <div class="contact-minimal-grid">
                 <div class="contact-item"><i class="fas fa-calendar-day"></i><b>متولد:</b> ۱۸ شهریور ۱۳۷۹</div>
                 <div class="contact-item"><i class="fas fa-phone-alt"></i><b>تماس:</b> ۰۹۰۳۹۶۱۵۹۲۹</div>
-                <div class="contact-item"><i class="fas fa-map-marker-alt"></i><b>محل سکونت:</b> ایران، بردسکن</div>
+                <div class="contact-item"><i class="fas fa-map-marker-alt"></i><b>محل سکونت:</b>خراسان رضوی | بردسکن</div>
                 <div class="contact-item"><i class="fas fa-heart"></i><b>وضعیت تاهل:</b> متاهل</div>
                 <div class="contact-item"><i class="fas fa-shield-alt"></i><b>نظام وظیفه:</b> پایان خدمت</div>
-                <div class="contact-item"><i class="fas fa-wallet"></i><b>حقوق درخواستی:</b> ۶۰ تا ۸۰ میلیون</div>
             </div>
 
             <div style="margin-top: 25px; padding-top: 20px; border-top: 1px dashed rgba(255,255,255,0.15);">
-                <span style="font-size: 14px; color: #cbd5e1; margin-left: 10px; font-weight: 500;">حوزه‌های شغلی مورد علاقه:</span>
+                <span style="font-size: 14px; color: #cbd5e1; margin-left: 10px; font-weight: 500;">گروه شغلی مورد علاقه:</span>
                 <div class="job-tag-container" style="display: inline-flex;">
-                    <span class="job-badge">توسعه نرم‌افزار (IT)</span>
-                    <span class="job-badge">معامله‌گر بازارهای مالی</span>
-                    <span class="job-badge">تحلیل و توسعه کسب‌وکار</span>
+                    <span class="job-badge">توسعه نرم افزار و برنامه نویسی</span>
+                    <span class="job-badge">تحلیل و توسعه کسب و کار / استراتژی / برنامه ریزی</span>
+                    <span class="job-badge">معامله گر و تحلیل گر بازارهای مالی</span>
                 </div>
             </div>
         </header>
 
         <!-- 2. Core and Technical Skills Section -->
         <section class="neo-glass-card reveal">
-            <h2 class="section-title"><i class="fas fa-bolt"></i> تخصص‌های اصلی و فنی</h2>
+            <h2 class="section-title"><i class="fas fa-bolt"></i> مهارت‌ها و تخصص‌ها</h2>
             
             <div class="skills-container">
-                <!-- Core Competencies -->
+                <!-- Complementary Skills -->
+                <div class="sub-skills-divider" style="margin-top: 0;">
+                    <i class="fas fa-star"></i> مهارت‌های تکمیلی
+                </div>
+                
                 <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>معامله‌گری پرایس اکشن و مالی رفتاری</span><span>۹۵٪</span></div>
-                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="95%"></div></div>
+                    <div class="progress-label-bar"><span>توسعه دهنده نرم افزار</span><span>۸۵٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="85%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>معامله گری (مالی رفتاری، اقتصاد رفتاری و پرایس اکشن)</span><span>۷۵٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="75%"></div></div>
                 </div>
                 <div class="progress-wrapper">
                     <div class="progress-label-bar"><span>طراحی ژورنال معاملاتی</span><span>۹۵٪</span></div>
                     <div class="progress-bg-track"><div class="progress-fill-bar" data-width="95%"></div></div>
                 </div>
                 <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>هوش مصنوعی</span><span>۹۰٪</span></div>
+                    <div class="progress-label-bar"><span>مدیریت ریسک معامله و سرمایه</span><span>۷۵٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="75%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>توانایی رفع مشکل نرم افزاری در هر زمینه ای</span><span>۷۵٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="75%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>تکنولوژی هوش مصنوعی</span><span>۶۰٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="60%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>تحلیل پیش‌گیرانه و کنترل هزینه</span><span>۶۵٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="65%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>معمار راهکار</span><span>۶۰٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="60%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>طراحی وبسایت استاتیک</span><span>۹۰٪</span></div>
                     <div class="progress-bg-track"><div class="progress-fill-bar" data-width="90%"></div></div>
                 </div>
                 <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>Adobe Photoshop & Illustrator</span><span>۹۵٪</span></div>
+                    <div class="progress-label-bar"><span>طراحی وبسایت خدماتی</span><span>۵۵٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="55%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>راه اندازی و طراحی وبسایت فروشگاهی</span><span>۸۰٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="80%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>اینترنت</span><span>۹۹٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="99%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Windows</span><span>۱۰۰٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="100%"></div></div>
+                </div>
+
+
+                <!-- Software Skills / Technical Specialties -->
+                <div class="sub-skills-divider">
+                    <i class="fas fa-code"></i> مهارت‌های نرم افزاری (تخصص‌های اصلی و فنی)
+                </div>
+
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Microsoft Excel</span><span>۳۲٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="90%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Microsoft Powerpoint</span><span>۳۴٪</span></div>
                     <div class="progress-bg-track"><div class="progress-fill-bar" data-width="95%"></div></div>
                 </div>
                 <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>MS Excel & PowerPoint</span><span>۹۵٪</span></div>
+                    <div class="progress-label-bar"><span>Adobe Illustrator</span><span>۳۱٪</span></div>
                     <div class="progress-bg-track"><div class="progress-fill-bar" data-width="95%"></div></div>
                 </div>
                 <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>مدیریت ریسک معامله و سرمایه</span><span>۸۰٪</span></div>
+                    <div class="progress-label-bar"><span>Adobe Photoshop</span><span>۳۵٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="98%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Adobe Premiere</span><span>۳۰٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="80%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>After Effects</span><span>۳۳٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="80%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Microsoft Access</span><span>۳۲٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="70%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>SQL Server</span><span>۳۴٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="60%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>MySQL</span><span>۳۱٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="60%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>WordPress</span><span>۳۵٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="85%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Microsoft Word</span><span>۳۰٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="95%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>React</span><span>۳۲٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="65%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Linux</span><span>۳۴٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="70%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Server Virtualization (ESX, VMware)</span><span>۳۳٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="72%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>شبکه</span><span>۳۱٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="60%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>C#</span><span>۳۵٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="40%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>C++</span><span>۳۰٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="35%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>C</span><span>۳۲٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="32%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Python</span><span>۳۴٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="75%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>JavaScript</span><span>۳۳٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="74%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>PHP</span><span>۳۱٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="60%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Windows Server</span><span>۳۵٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="80%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Visual Basic</span><span>۳۰٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="35%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Adobe Dreamweaver</span><span>۳۲٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="25%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Maya</span><span>۳۴٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="34%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Microsoft Visual Studio</span><span>۳۳٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="65%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Visual Studio Code</span><span>۳۱٪</span></div>
                     <div class="progress-bg-track"><div class="progress-fill-bar" data-width="80%"></div></div>
                 </div>
 
-                <!-- Software & Tech Subskills -->
-                <div class="sub-skills-divider">
-                    <i class="fas fa-code"></i> تکنولوژی‌ها، نرم‌افزارها و ابزارها (دارای توانایی بالا در رفع مشکلات نرم‌افزاری)
-                </div>
-
-                <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>SQL Server & MySQL</span><span>۳۴٪</span></div>
-                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="34%"></div></div>
-                </div>
-                <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>Python</span><span>۳۲٪</span></div>
-                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="32%"></div></div>
-                </div>
-                <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>React</span><span>۳۵٪</span></div>
-                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="35%"></div></div>
-                </div>
-                <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>JavaScript</span><span>۳۱٪</span></div>
-                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="31%"></div></div>
-                </div>
-                <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>PHP</span><span>۳۳٪</span></div>
-                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="33%"></div></div>
-                </div>
-                <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>C# / C++ / C</span><span>۳۵٪</span></div>
-                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="35%"></div></div>
-                </div>
-                <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>Linux</span><span>۳۲٪</span></div>
-                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="32%"></div></div>
-                </div>
-                <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>Windows Server</span><span>۳۴٪</span></div>
-                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="34%"></div></div>
-                </div>
-                <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>VMware / ESX</span><span>۳۱٪</span></div>
-                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="31%"></div></div>
-                </div>
-                <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>WordPress</span><span>۳۳٪</span></div>
-                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="33%"></div></div>
-                </div>
-                <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>PowerBI</span><span>۳۵٪</span></div>
-                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="35%"></div></div>
-                </div>
-                <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>Adobe Premiere & AE</span><span>۳۲٪</span></div>
-                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="32%"></div></div>
-                </div>
-                <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>فن‌آوران (بیمه)</span><span>۳۴٪</span></div>
-                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="34%"></div></div>
-                </div>
-                <div class="progress-wrapper">
-                    <div class="progress-label-bar"><span>کنترل هزینه</span><span>۳۳٪</span></div>
-                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="33%"></div></div>
-                </div>
             </div>
         </section>
 
-        <!-- 3. Statistics Counter Section -->
+        <!-- 3. Statistics Counter Section 
         <div class="stats-row reveal">
             <div class="stat-box">
                 <span class="stat-num counter" data-target="26">0</span>
@@ -520,26 +599,22 @@
             </div>
             <div class="stat-box">
                 <span class="stat-num counter" data-target="1">0</span>
-                <span class="stat-txt">پروژه معماری سیستم</span>
+                <span class="stat-txt">پروژه سیستم هوشمند انالیز رفتار معامله گر</span>
             </div>
         </div>
+        -->
 
         <!-- 4. Work Experience & Projects Section -->
         <section class="neo-glass-card reveal">
-            <h2 class="section-title"><i class="fas fa-briefcase"></i> سوابق شغلی و پروژه‌ها</h2>
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> سوابق شغلی</h2>
             <div class="timeline-container">
                 <div class="timeline-node">
-                    <span class="node-date">خرداد ۱۴۰۴ - تاکنون</span>
+                    <span class="node-date">خرداد 1404</span>
                     <h4>کارشناس مانیتورینگ</h4>
                     <p>شرکت کومه معدن پارس (Koomeh Mine Pars)</p>
                 </div>
                 <div class="timeline-node">
-                    <span class="node-date">۱۴۰۵</span>
-                    <h4>معمار راهکار و طراح سیستم</h4>
-                    <p>پروژه: طراحی و معماری سیستم ثبت پیشرفته ژورنال معاملاتی (Advanced Trading Journal System)</p>
-                </div>
-                <div class="timeline-node">
-                    <span class="node-date">اسفند ۱۴۰۳ - اردیبهشت ۱۴۰۴</span>
+                    <span class="node-date">اسفند 1403 - اردیبهشت 1404</span>
                     <h4>دستیار اجرایی</h4>
                     <p>شرکت کومه معدن پارس</p>
                 </div>
@@ -548,22 +623,34 @@
 
         <!-- 5. Educational Background Section -->
         <section class="neo-glass-card reveal">
-            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> سوابق تحصیلی و دوره‌ها</h2>
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> سوابق تحصیلی</h2>
             <div class="timeline-container">
                 <div class="timeline-node">
-                    <span class="node-date">۱۳۹۶ - ۱۴۰۰</span>
+                    <span class="node-date">1396 - 1400</span>
                     <h4>کارشناسی مهندسی کامپیوتر - نرم‌افزار</h4>
-                    <p>دانشگاه فنی و حرفه ای امام خمینی | دانشجو ممتاز دانشکده (سال ۱۳۹۸) | معدل: ۱۸</p>
+                    <p>دانشگاه فنی و حرفه ای امام خمینی سبزوار</p>
                 </div>
                 <div class="timeline-node">
-                    <span class="node-date">۱۳۹۹</span>
-                    <h4>دوره‌های تخصصی بازارهای مالی</h4>
-                    <p>• پرایس اکشن، مالی رفتاری و سنتیمنت (۳۵۰ ساعت) <br>• اقتصاد کلان (۱۰۰ ساعت)</p>
+                    <span class="node-date">1394 - 1396</span>
+                    <h4>کاردانی تکنولوژی کامپیوتر - نرم‌افزار</h4>
+                    <p>آموزشکده فنی و حرفه ای شهید هنرور بردسکن</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Awards & Honors Section -->
+        <section class="neo-glass-card reveal">
+            <h2 class="section-title"><i class="fas fa-award"></i> جوایز و افتخارات</h2>
+            <div class="timeline-container">
+                <div class="timeline-node">
+                    <span class="node-date">1400</span>
+                    <h4>دانشجو ممتاز</h4>
+                    <p>دانشکده امام خمینی سبزوار</p>
                 </div>
                 <div class="timeline-node">
-                    <span class="node-date">۱۴۰۴</span>
-                    <h4>فعالیت داوطلبانه</h4>
-                    <p>مبحث اقتصاد کلان</p>
+                    <span class="node-date">دستاورد ورزشی</span>
+                    <h4>گواهی نامه کمربند دان یک تکواندو</h4>
+                    <p></p>
                 </div>
             </div>
         </section>
