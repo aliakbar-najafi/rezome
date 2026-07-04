@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رزومه اختصاصی | علی اکبر نجفی</title>
+    <!-- Shabnam Font -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.2/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styling & Background */
+        body {
+            font-family: 'Shabnam', sans-serif;
+            background-color: #05050a;
+            color: #e2e8f0;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 40px 20px;
+            /* گرادیان‌های نئونی متحرک در پس‌زمینه */
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(157, 78, 221, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 243, 255, 0.15), transparent 25%);
+            background-attachment: fixed;
+            transition: background-position 0.1s ease-out; /* برای افکت پارالاکس موس */
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Particles Background Effect */
+        .particles-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+            background-image: 
+                radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 40px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 50px 160px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 90px 40px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 130px 80px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 160px 120px, #fff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: moveBg 150s linear infinite;
+            opacity: 0.2;
+        }
+        @keyframes moveBg { from { background-position: 0 0; } to { background-position: 400px 400px; } }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Neumorphic/Glassmorphic Cards 2026 */
+        .neo-glass-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-top: 1px solid rgba(255,255,255,0.15);
+            border-left: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-radius: 1.5rem;
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            padding: 45px;
+        }
+        
+        /* افکت شاین (برق زدن) روی کارت‌ها هنگام هاور */
+        .neo-glass-card::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
+            transform: skewX(-20deg); transition: 0.7s; z-index: 1; pointer-events: none;
+        }
+        .neo-glass-card:hover::before { left: 150%; }
+        .neo-glass-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px -12px rgba(0, 243, 255, 0.2);
+            border-color: rgba(0, 243, 255, 0.3);
+        }
+
+        /* Typography */
+        .text-gradient {
+            background: linear-gradient(to left, #00f3ff, #9d4edd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 35px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #fff;
+        }
+
+        .section-title i {
+            color: #00f3ff;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+        }
+
+        /* Profile Header Block */
+        .profile-header-block {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .profile-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 32%;
+            background: linear-gradient(135deg, #00f3ff, #9d4edd);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 65px;
+            color: #fff;
+            box-shadow: 0 20px 50px rgba(0, 243, 255, 0.25);
+            animation: morphFloat 6s ease-in-out infinite;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes morphFloat {
+            0%, 100% { border-radius: 32% 68% 68% 32% / 32% 32% 68% 68%; transform: translateY(0); }
+            50% { border-radius: 68% 32% 32% 68% / 68% 68% 32% 32%; transform: translateY(-12px); }
+        }
+
+        .intro-text h1 {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #00f3ff;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            color: #cbd5e1;
+            font-size: 15px;
+            text-align: justify;
+        }
+
+        /* Contact Details Minimal Grid */
+        .contact-minimal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.15);
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+
+        .contact-item b {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .contact-item i { color: #00f3ff; margin-left: 8px; width: 16px; text-align: center; }
+
+        .job-tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .job-badge {
+            background: rgba(157, 78, 221, 0.15);
+            border: 1px solid rgba(157, 78, 221, 0.3);
+            color: #d8b4fe;
+            font-size: 13px;
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        /* Modern Progress Bars */
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .progress-wrapper {
+            margin-bottom: 5px;
+        }
+
+        .progress-label-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .progress-bg-track {
+            background-color: rgba(255, 255, 255, 0.05);
+            height: 14px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .progress-fill-bar {
+            background: linear-gradient(90deg, #9d4edd, #00f3ff);
+            height: 100%;
+            border-radius: 20px;
+            width: 0;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            transition: width 1.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .sub-skills-divider {
+            grid-column: 1 / -1;
+            margin: 20px 0 10px 0;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            color: #eab308;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        
+        .sub-skills-divider i { margin-left: 6px; }
+
+        /* Statistics Counter Boxes */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat-box {
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-top: 1px solid rgba(255,255,255,0.15);
+            border-left: 1px solid rgba(255,255,255,0.15);
+            padding: 30px 15px;
+            border-radius: 1.5rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .stat-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px -10px rgba(157, 78, 221, 0.3);
+            border-color: rgba(157, 78, 221, 0.4);
+        }
+
+        .stat-num {
+            font-size: 38px;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-txt { font-size: 14px; color: #cbd5e1; font-weight: 500; }
+
+        /* Timeline Components */
+        .timeline-container {
+            border-right: 2px solid rgba(255, 255, 255, 0.15);
+            padding-right: 30px;
+            margin-right: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-node {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-node:last-child { margin-bottom: 0; }
+
+        .timeline-node::before {
+            content: '';
+            position: absolute;
+            right: -38px;
+            top: 8px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #00f3ff;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.6);
+        }
+
+        .node-date {
+            font-size: 13px;
+            color: #00f3ff;
+            font-weight: bold;
+            background: rgba(0, 243, 255, 0.1);
+            padding: 6px 16px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 12px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .timeline-node h4 { font-size: 19px; margin-bottom: 8px; color: #fff; font-weight: 700; }
+        .timeline-node p { font-size: 15px; color: #cbd5e1; line-height: 1.8;}
+
+        /* Scroll Reveal Animations */
+        .reveal { opacity: 0; transform: translateY(50px) scale(0.95); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #05050a; }
+        ::-webkit-scrollbar-thumb { background: #9d4edd; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00f3ff; }
+
+        /* Responsive Styles */
+        @media (max-width: 850px) {
+            .profile-header-block { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+            .profile-avatar { margin: 0 auto; }
+            .contact-minimal-grid { grid-template-columns: 1fr; text-align: right; gap: 12px; }
+            .skills-container { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: 1fr 1fr; }
+            .description { text-align: center; }
+            .job-tag-container { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Particles Background Effect -->
+    <div class="particles-bg"></div>
+
+    <div class="container">
+        
+        <!-- 1. Profile and About Section -->
+        <header class="neo-glass-card reveal">
+            <div class="profile-header-block">
+                <div class="avatar-wrapper">
+                    <div class="profile-avatar">
+                        <img src="https://raw.githubusercontent.com/aliakbar-najafi/4/main/icon%20web%20prof.png" alt="profile">
+                    </div>
+                </div>
+                <div class="intro-text">
+                    <p style="font-size: 16px; color: #00f3ff; margin-bottom: 4px; font-weight: 500;">درود بر شما 👋 من</p>
+                    <h1 class="text-gradient">علی اکبر نجفی هستم</h1>
+                    <div class="subtitle">کارشناس IT | تحلیل‌گر بازارهای مالی</div>
+                    <p class="description">
+                        علاقه‌مند به یادگیری و پیشرفت مستمر در زمینه مهندسی کامپیوتر، بازارهای مالی، معامله‌گری و هوش مصنوعی. 
+                        متخصص در ترکیب علم نرم‌افزار با استراتژی‌های مالی رفتاری.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Profile Info Grid -->
+            <div class="contact-minimal-grid">
+                <div class="contact-item"><i class="fas fa-calendar-day"></i><b>متولد:</b> ۱۸ شهریور ۱۳۷۹</div>
+                <div class="contact-item"><i class="fas fa-phone-alt"></i><b>تماس:</b> ۰۹۰۳۹۶۱۵۹۲۹</div>
+                <div class="contact-item"><i class="fas fa-map-marker-alt"></i><b>محل سکونت:</b> ایران، بردسکن</div>
+                <div class="contact-item"><i class="fas fa-heart"></i><b>وضعیت تاهل:</b> متاهل</div>
+                <div class="contact-item"><i class="fas fa-shield-alt"></i><b>نظام وظیفه:</b> پایان خدمت</div>
+                <div class="contact-item"><i class="fas fa-wallet"></i><b>حقوق درخواستی:</b> ۶۰ تا ۸۰ میلیون</div>
+            </div>
+
+            <div style="margin-top: 25px; padding-top: 20px; border-top: 1px dashed rgba(255,255,255,0.15);">
+                <span style="font-size: 14px; color: #cbd5e1; margin-left: 10px; font-weight: 500;">حوزه‌های شغلی مورد علاقه:</span>
+                <div class="job-tag-container" style="display: inline-flex;">
+                    <span class="job-badge">توسعه نرم‌افزار (IT)</span>
+                    <span class="job-badge">معامله‌گر بازارهای مالی</span>
+                    <span class="job-badge">تحلیل و توسعه کسب‌وکار</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 2. Core and Technical Skills Section -->
+        <section class="neo-glass-card reveal">
+            <h2 class="section-title"><i class="fas fa-bolt"></i> تخصص‌های اصلی و فنی</h2>
+            
+            <div class="skills-container">
+                <!-- Core Competencies -->
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>معامله‌گری پرایس اکشن و مالی رفتاری</span><span>۹۵٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="95%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>طراحی ژورنال معاملاتی</span><span>۹۵٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="95%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>هوش مصنوعی</span><span>۹۰٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="90%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Adobe Photoshop & Illustrator</span><span>۹۵٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="95%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>MS Excel & PowerPoint</span><span>۹۵٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="95%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>مدیریت ریسک معامله و سرمایه</span><span>۸۰٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="80%"></div></div>
+                </div>
+
+                <!-- Software & Tech Subskills -->
+                <div class="sub-skills-divider">
+                    <i class="fas fa-code"></i> تکنولوژی‌ها، نرم‌افزارها و ابزارها (دارای توانایی بالا در رفع مشکلات نرم‌افزاری)
+                </div>
+
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>SQL Server & MySQL</span><span>۳۴٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="34%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Python</span><span>۳۲٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="32%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>React</span><span>۳۵٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="35%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>JavaScript</span><span>۳۱٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="31%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>PHP</span><span>۳۳٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="33%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>C# / C++ / C</span><span>۳۵٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="35%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Linux</span><span>۳۲٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="32%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Windows Server</span><span>۳۴٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="34%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>VMware / ESX</span><span>۳۱٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="31%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>WordPress</span><span>۳۳٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="33%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>PowerBI</span><span>۳۵٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="35%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>Adobe Premiere & AE</span><span>۳۲٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="32%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>فن‌آوران (بیمه)</span><span>۳۴٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="34%"></div></div>
+                </div>
+                <div class="progress-wrapper">
+                    <div class="progress-label-bar"><span>کنترل هزینه</span><span>۳۳٪</span></div>
+                    <div class="progress-bg-track"><div class="progress-fill-bar" data-width="33%"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Statistics Counter Section -->
+        <div class="stats-row reveal">
+            <div class="stat-box">
+                <span class="stat-num counter" data-target="26">0</span>
+                <span class="stat-txt">مهارت نرم‌افزاری</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-num counter" data-target="450">0</span>
+                <span class="stat-txt">ساعت آموزش تخصصی</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-num counter" data-target="18">0</span>
+                <span class="stat-txt">معدل کارشناسی</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-num counter" data-target="1">0</span>
+                <span class="stat-txt">پروژه معماری سیستم</span>
+            </div>
+        </div>
+
+        <!-- 4. Work Experience & Projects Section -->
+        <section class="neo-glass-card reveal">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> سوابق شغلی و پروژه‌ها</h2>
+            <div class="timeline-container">
+                <div class="timeline-node">
+                    <span class="node-date">خرداد ۱۴۰۴ - تاکنون</span>
+                    <h4>کارشناس مانیتورینگ</h4>
+                    <p>شرکت کومه معدن پارس (Koomeh Mine Pars)</p>
+                </div>
+                <div class="timeline-node">
+                    <span class="node-date">۱۴۰۵</span>
+                    <h4>معمار راهکار و طراح سیستم</h4>
+                    <p>پروژه: طراحی و معماری سیستم ثبت پیشرفته ژورنال معاملاتی (Advanced Trading Journal System)</p>
+                </div>
+                <div class="timeline-node">
+                    <span class="node-date">اسفند ۱۴۰۳ - اردیبهشت ۱۴۰۴</span>
+                    <h4>دستیار اجرایی</h4>
+                    <p>شرکت کومه معدن پارس</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Educational Background Section -->
+        <section class="neo-glass-card reveal">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> سوابق تحصیلی و دوره‌ها</h2>
+            <div class="timeline-container">
+                <div class="timeline-node">
+                    <span class="node-date">۱۳۹۶ - ۱۴۰۰</span>
+                    <h4>کارشناسی مهندسی کامپیوتر - نرم‌افزار</h4>
+                    <p>دانشگاه فنی و حرفه ای امام خمینی | دانشجو ممتاز دانشکده (سال ۱۳۹۸) | معدل: ۱۸</p>
+                </div>
+                <div class="timeline-node">
+                    <span class="node-date">۱۳۹۹</span>
+                    <h4>دوره‌های تخصصی بازارهای مالی</h4>
+                    <p>• پرایس اکشن، مالی رفتاری و سنتیمنت (۳۵۰ ساعت) <br>• اقتصاد کلان (۱۰۰ ساعت)</p>
+                </div>
+                <div class="timeline-node">
+                    <span class="node-date">۱۴۰۴</span>
+                    <h4>فعالیت داوطلبانه</h4>
+                    <p>مبحث اقتصاد کلان</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JavaScript Animations -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // 0. Trigger initial reveal for elements already in view
+            setTimeout(() => {
+                document.querySelectorAll('.reveal').forEach(element => {
+                    if (element.getBoundingClientRect().top < window.innerHeight) {
+                        element.classList.add('active');
+                    }
+                });
+            }, 100);
+
+            // 1. Numbers Counting Animation
+            const counters = document.querySelectorAll('.counter');
+            let counterAnimated = false;
+
+            const runCounters = () => {
+                counters.forEach(counter => {
+                    const update = () => {
+                        const target = +counter.getAttribute('data-target');
+                        const current = +counter.innerText;
+                        const step = target / 60; 
+
+                        if (current < target) {
+                            counter.innerText = Math.ceil(current + step);
+                            setTimeout(update, 30);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    update();
+                });
+            };
+
+            // 2. Progress Bars Animation
+            const progressBars = document.querySelectorAll('.progress-fill-bar');
+            let barsAnimated = false;
+
+            const runProgressBars = () => {
+                progressBars.forEach(bar => {
+                    const targetWidth = bar.getAttribute('data-width');
+                    bar.style.width = targetWidth;
+                });
+            };
+
+            // 3. Intersection Observer for Scroll Triggering & Reveal
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Reveal element
+                        entry.target.classList.add('active');
+
+                        // Trigger counters
+                        if (entry.target.classList.contains('stats-row') && !counterAnimated) {
+                            runCounters();
+                            counterAnimated = true;
+                        }
+                        
+                        // Trigger progress bars
+                        if (entry.target.querySelector('.progress-fill-bar') && !barsAnimated) {
+                            runProgressBars();
+                            barsAnimated = true;
+                        }
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            // Observe all reveal elements
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            
+            // Observe specific triggers if they don't have reveal class
+            const skillsSection = document.querySelector('.skills-container').parentElement;
+            if (skillsSection && !skillsSection.classList.contains('reveal')) {
+                observer.observe(skillsSection);
+            }
+        });
+    </script>
+</body>
+</html>
