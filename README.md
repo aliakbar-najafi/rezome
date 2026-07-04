@@ -1,2 +1,0 @@
-# rezome
-Rezome
