@@ -117,17 +117,17 @@
 .profile-avatar {
     width: 160px;
     height: 160px;
-    /* مقدار اولیه border-radius هماهنگ با فریم اول انیمیشن */
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    border-radius: 32% 68% 68% 32% / 32% 32% 68% 68%;
     overflow: hidden;
     background: linear-gradient(135deg, #00f3ff, #9d4edd);
-    border: 3px solid rgba(255, 255, 255, 0.15);
-    
-    /* استفاده از cubic-bezier اختصاصی برای حرکت فوق‌العاده نرم‌تر */
+    box-shadow: 0 20px 50px rgba(0, 243, 255, .25);
+    border: 3px solid rgba(255, 255, 255, .15);
+
+    /* تغییر ۱: افزایش زمان به ۸ ثانیه و استفاده از cubic-bezier برای نرمی فوق‌العاده */
     animation: morphFloat 8s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
-    
-    /* بهینه‌سازی پردازش گرافیکی برای جلوگیری از پرش یا لرزش انیمیشن */
-    will-change: border-radius, transform, box-shadow;
+
+    /* تغییر ۲: فعال‌سازی شتاب‌دهنده گرافیکی (GPU) برای حذف لرزش لبه‌ها */
+    will-change: border-radius, transform;
     transform: translate3d(0, 0, 0);
 }
 
@@ -136,36 +136,20 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    /* یک ترنزیشن بسیار نرم برای زمانی که تصویر هاور می‌شود */
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* افکت جذاب زوم شدن تصویر هنگام قرار گرفتن موس روی آواتار */
-.profile-avatar:hover img {
-    transform: scale(1.08);
-}
-
-/* تعریف انیمیشن morphFloat به صورت کاملاً نرم و شناور */
+/* تغییر ۳: استفاده از translate3d به جای translateY معمولی جهت رندر روان‌تر تصویری */
 @keyframes morphFloat {
-    0% {
-        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-        transform: translateY(0px) rotate(0deg);
-        box-shadow: 0 20px 40px rgba(0, 243, 255, 0.2);
+    0%, 100% { 
+        border-radius: 32% 68% 68% 32% / 32% 32% 68% 68%; 
+        transform: translate3d(0, 0, 0); 
     }
-    50% {
-        /* تغییر شکل گوشه‌ها به صورت بیضی‌های نامنظم و نرم */
-        border-radius: 50% 50% 30% 70% / 50% 60% 40% 60%;
-        /* حرکت به سمت بالا (شناور شدن) همراه با یک چرخش بسیار جزیی */
-        transform: translateY(-12px) rotate(1.5deg);
-        /* افزایش و نرم‌تر شدن سایه هنگام بالا رفتن */
-        box-shadow: 0 30px 50px rgba(157, 78, 221, 0.3);
-    }
-    100% {
-        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-        transform: translateY(0px) rotate(0deg);
-        box-shadow: 0 20px 40px rgba(0, 243, 255, 0.2);
+    50% { 
+        border-radius: 68% 32% 32% 68% / 68% 68% 32% 32%; 
+        transform: translate3d(0, -12px, 0); 
     }
 }
+
 
     
         
